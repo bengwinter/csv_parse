@@ -32,7 +32,7 @@ CSV.foreach("2013_analysis.csv") do |row|
   puts i
 end
 
-CSV.open("2013_percentile_data", "w") do |csv|
+CSV.open("2013_percentile_data.csv", "w") do |csv|
   full_array.each do |x|
     csv << x
   end

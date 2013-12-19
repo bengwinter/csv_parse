@@ -4,8 +4,9 @@ require 'date'
 require 'pry'
 
 
-full_hash = {}
+full_array = []
 check_array = []
+i = 0
 CSV.foreach("2013_analysis.csv") do |row|
   income_entries = []
   key = row.shift
@@ -18,18 +19,24 @@ CSV.foreach("2013_analysis.csv") do |row|
   end
   split_value = (income_entries.length/100)
   percentiles = income_entries.each_slice(split_value).to_a
+  income_averages << key
   percentiles.each do |y|
     income_sum = y.inject(:+)
     num_entries = y.length
     income_average = (income_sum/num_entries)
-    @income_averages << income_average
+    income_averages << income_average
   end
-  full_hash[key] = @income_averages
-  check_array << full_hash[key].length
+  full_array << income_averages
+  check_array << income_averages.length
+  i += 1
+  puts i
 end
 
-binding.pry
-return check_array
+CSV.open("2013_percentile_data", "w") do |csv|
+  full_array.each do |x|
+    csv << x
+  end
+end
 
 # File.open("2013_analysis.csv", 'r').each_line do |line|
 #      binding.pry

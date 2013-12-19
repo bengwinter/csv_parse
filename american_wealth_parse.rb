@@ -18,7 +18,7 @@ CSV.foreach("2013_analysis.csv") do |row|
   end
   split_value = (income_entries.length/100)
   percentiles = income_entries.each_slice(split_value).to_a
-  perenctiles.each do |y|
+  percentiles.each do |y|
     income_sum = y.inject(:+)
     num_entries = y.length
     income_average = (income_sum/num_entries)
@@ -28,6 +28,7 @@ CSV.foreach("2013_analysis.csv") do |row|
   check_array << full_hash[key].length
 end
 
+binding.pry
 return check_array
 
 # File.open("2013_analysis.csv", 'r').each_line do |line|

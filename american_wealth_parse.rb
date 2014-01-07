@@ -6,11 +6,11 @@ require 'pry'
 document_array = ["2013_analysis.csv", "2000_analysis.csv"]
 documents_created_array = ["2013_percentile_data.csv", "2000_percentile_data.csv"]
 
-full_array = []
-check_array = []
-i = 0
 j = 0
 document_array.each do |doc|
+  full_array = []
+  check_array = []
+  i = 0
   CSV.foreach(doc) do |row|
     income_entries = []
     key = row.shift

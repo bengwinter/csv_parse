@@ -9,7 +9,6 @@ documents_created_array = ["2013_percentile_data.csv", "2000_percentile_data.csv
 j = 0
 document_array.each do |doc|
   full_array = []
-  check_array = []
   i = 0
   CSV.foreach(doc) do |row|
     income_entries = []
@@ -31,7 +30,6 @@ document_array.each do |doc|
       income_averages << income_average
     end
     full_array << income_averages
-    check_array << income_averages.length
     i += 1
     puts i
   end
